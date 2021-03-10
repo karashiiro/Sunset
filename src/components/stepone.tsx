@@ -3,14 +3,14 @@ import React from "react";
 const dogImg = require("./dog");
 
 export function StepOne() {
-  return (
-    <View style={containerStyle}>
-      <Text wordWrap={true}>
-        Edit App.tsx to make changes to this screen. Then come back to see your
-        changes. Changes should reflect live thanks to Hot Reloading. 🔥
-      </Text>
-      <Text>
-        {`
+	return (
+		<View style={containerStyle}>
+			<Text wordWrap={true}>
+				Edit App.tsx to make changes to this screen. Then come back to see your changes. Changes
+				should reflect live thanks to Hot Reloading. 🔥
+			</Text>
+			<Text>
+				{`
           <p style="color: rgb(255,72,38);"> 
             <center>
               <img src="${dogImg}" alt="doggy" />  
@@ -19,9 +19,9 @@ export function StepOne() {
           </p>
           <hr />
         `}
-      </Text>
-    </View>
-  );
+			</Text>
+		</View>
+	);
 }
 
 const containerStyle = `

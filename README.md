@@ -1,4 +1,4 @@
-# react-nodegui-starter
+# Sunset
 
 **Clone and run for a quick way to see React NodeGui in action.**
 
