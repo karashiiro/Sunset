@@ -17,8 +17,8 @@ function App() {
 	const [tokenInstalled] = useState(token != null && token !== "");
 
 	return (
-		<Window windowIcon={winIcon} windowTitle="Hello 👋🏽" minSize={minSize} styleSheet={styleSheet}>
-			<View style={containerStyle}>
+		<Window windowIcon={winIcon} windowTitle="Sunset" minSize={minSize} styleSheet={styleSheet}>
+			<View style={containerStyle} id="base">
 				<Text id="welcome-text">Welcome to NodeGui 🐕</Text>
 				<Text id="step-1">1. Play around</Text>
 				<StepOne />
@@ -34,17 +34,25 @@ const containerStyle = `
 `;
 
 const styleSheet = `
+  #base {
+    background-color: #353535;
+    color: white;
+  }
+
   #welcome-text {
     font-size: 24px;
     padding-top: 20px;
-    qproperty-alignment: 'AlignHCenter';
-    font-family: 'sans-serif';
+    qproperty-alignment: "AlignHCenter";
+    font-family: "Segoe UI", "Arial", "sans-serif";
+    color: white;
   }
 
   #step-1, #step-2 {
-    font-size: 18px;
+    font-family: "Segoe UI", "Arial", sans-serif;
+    font-size: 22px;
     padding-top: 10px;
     padding-horizontal: 20px;
+    color: white;
   }
 `;
 

@@ -14,7 +14,7 @@ export function StepTwo() {
 		<View style={containerStyle}>
 			<Text style={textStyle} wordWrap={true}>
 				{`
-          <ol>
+          <ol style="color: white;">
             <li>
                 Open chrome and navigate to chrome://inspect. You should see a target below with your app.
             </li>
