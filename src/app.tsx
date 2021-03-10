@@ -6,6 +6,7 @@ import { StepOne } from "./components/stepone";
 import { StepTwo } from "./components/steptwo";
 import nodeguiIcon from "../assets/nodegui.jpg";
 import { Configuration } from "./services";
+import { StatusBar } from "./components/StatusBar";
 
 const minSize = { width: 500, height: 520 };
 const winIcon = new QIcon(path.resolve(__dirname, nodeguiIcon));
@@ -24,6 +25,7 @@ function App() {
 				<StepOne />
 				<Text id="step-2">2. Debug</Text>
 				<StepTwo />
+				<StatusBar tokenInstalled={tokenInstalled} />
 			</View>
 		</Window>
 	);
