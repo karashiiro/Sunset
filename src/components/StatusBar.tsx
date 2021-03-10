@@ -1,14 +1,15 @@
 import { Text, View } from "@nodegui/react-nodegui";
 import React from "react";
 
-export function StatusBar(props: { tokenInstalled: boolean }) {
-	if (props.tokenInstalled) {
+export function StatusBar(props: { ready: boolean }) {
+	if (props.ready) {
 		return (
 			<View>
 				<Text style={textContainerStyle}>
 					{`
                     <hr />
-                    <p style="${textStyle}"><span style="${emojiStyle}">🟢</span> Token installed</p>`}
+                    <p style="${textStyle}"><span style="${emojiStyle}">🟢</span> Connected to Discord</p>
+					<br />`}
 				</Text>
 			</View>
 		);
@@ -18,7 +19,8 @@ export function StatusBar(props: { tokenInstalled: boolean }) {
 				<Text style={textContainerStyle}>
 					{`
                     <hr />
-                    <p style="${textStyle}"><span style="${emojiStyle}">🔴</span> Token not installed</p>`}
+                    <p style="${textStyle}"><span style="${emojiStyle}">🔴</span> Disconnected</p>
+					<br />`}
 				</Text>
 			</View>
 		);

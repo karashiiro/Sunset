@@ -7,7 +7,10 @@ export const Configuration = React.createContext(
 		projectName: "Sunset",
 		fileExtension: "yml",
 		serialize: yaml.dump,
-		deserialize: yaml.loadAll,
+		deserialize: (data) => <any>yaml.load(data),
+		defaults: {
+			discordToken: "",
+		},
 	}),
 );
 

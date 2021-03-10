@@ -31,6 +31,16 @@ module.exports = (env, argv) => {
 					use: [{ loader: "file-loader" }],
 				},
 				{
+					// https://github.com/discordjs/discord.js/issues/3563
+					// https://github.com/node-fetch/node-fetch/issues/450
+					test: /discord\.js.*\.js$/i,
+					loader: "string-replace-loader",
+					options: {
+						search: "const fetch = require('node-fetch');",
+						replace: "const fetch = require('node-fetch').default;",
+					}
+				},
+				{
 					test: /\.node/i,
 					use: [
 						{
@@ -58,7 +68,7 @@ module.exports = (env, argv) => {
 		config.entry.unshift("webpack/hot/poll?100");
 	}
 
-	if (argv.p) {
+	if (argv.mode === "production") {
 		config.plugins.push(new CleanWebpackPlugin());
 	}
 	return config;

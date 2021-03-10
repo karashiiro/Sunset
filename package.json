@@ -6,10 +6,15 @@
 	"dependencies": {
 		"@nodegui/nodegui": "^0.30.2",
 		"@nodegui/react-nodegui": "^0.10.4",
+		"bufferutil": "^4.0.3",
 		"conf": "^9.0.2",
+		"discord.js": "^12.5.1",
+		"erlpack": "^0.1.3",
+		"ffmpeg-static": "^4.2.7",
 		"js-yaml": "^4.0.0",
 		"open": "^7.0.0",
-		"react": "^16.14.0"
+		"react": "^16.14.0",
+		"utf-8-validate": "^5.0.4"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.7.7",
@@ -29,14 +34,15 @@
 		"fork-ts-checker-webpack-plugin": "^3.1.1",
 		"native-addon-loader": "^2.0.1",
 		"prettier": "^2.2.1",
+		"string-replace-loader": "^3.0.1",
 		"typescript": "^3.7.4",
-		"webpack": "^4.41.4",
-		"webpack-cli": "^3.3.10"
+		"webpack": "^5.24.4",
+		"webpack-cli": "^4.5.0"
 	},
 	"scripts": {
 		"start": "qode ./dist/index.js",
-    	"debug": "qode --inspect ./dist/index.js",
-		"build": "webpack -p",
+		"debug": "qode --inspect ./dist/index.js",
+		"build": "webpack --mode=production",
 		"dev": "webpack --mode=development"
 	},
 	"eslintConfig": {

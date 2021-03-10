@@ -1,4 +1,4 @@
-import { Text, Window, hot, View } from "@nodegui/react-nodegui";
+import { Text, Window, hot, View, LineEdit, Button } from "@nodegui/react-nodegui";
 import React, { useContext, useState } from "react";
 import { QIcon } from "@nodegui/nodegui";
 import path from "path";
@@ -7,15 +7,37 @@ import { StepTwo } from "./components/steptwo";
 import nodeguiIcon from "../assets/nodegui.jpg";
 import { Configuration } from "./services";
 import { StatusBar } from "./components/StatusBar";
+import { Discord } from "./services/Discord";
 
 const minSize = { width: 500, height: 520 };
 const winIcon = new QIcon(path.resolve(__dirname, nodeguiIcon));
 
 function App() {
 	const config = useContext(Configuration);
+	const client = useContext(Discord);
 
-	const token = config.get("discordToken") as string;
-	const [tokenInstalled] = useState(token != null && token !== "");
+	const [token, setToken] = useState(config.get("discordToken") as string);
+	const [ready, setReady] = useState(false);
+	const [ran, setRan] = useState(false);
+
+	const login = () => {
+		if (ready) {
+			client.destroy();
+		}
+
+		config.set("discordToken", token);
+
+		client
+			.on("ready", () => setReady(true))
+			.on("disconnect", () => setReady(false))
+			.login(token)
+			.catch(console.error);
+	};
+
+	if (!ran && token) {
+		setRan(true);
+		login();
+	}
 
 	return (
 		<Window windowIcon={winIcon} windowTitle="Sunset" minSize={minSize} styleSheet={styleSheet}>
@@ -25,7 +47,15 @@ function App() {
 				<StepOne />
 				<Text id="step-2">2. Debug</Text>
 				<StepTwo />
-				<StatusBar tokenInstalled={tokenInstalled} />
+				<LineEdit
+					on={{
+						textChanged: setToken,
+					}}
+					text={token}
+					placeholderText="Discord bot token"
+				/>
+				<Button on={{ clicked: login }} text="Login" />
+				<StatusBar ready={ready} />
 			</View>
 		</Window>
 	);
